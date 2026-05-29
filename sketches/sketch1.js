@@ -46,7 +46,7 @@ function setup() {
   circleA = new Circle(150, 150, 60);
   circleB = new Circle(150, 150, 90);
   noStroke();
-  background(204);
+  background(225);
 }
 
 function draw() {
@@ -55,13 +55,13 @@ function draw() {
   intersect(circleA, circleB);
 }
 
-function Circle(px, py, pr) {
+function Circle(px, py, pr) { // editing the class Circle
   this.x = px;
   this.y = py;
   this.r = pr;
   this.r2 = this.r * this.r;
-  this.xspeed = random(-2, 2);
-  this.yspeed = random(-2, 2);
+  this.xspeed = random(-4, 4);
+  this.yspeed = random(-4, 4);
   this.xdir = 1;
   this.ydir = -1;
 
@@ -101,7 +101,9 @@ function intersect(cA, cB) {
   var pbX = x2 - h * (cB.y - cA.y) / d;
   var pbY = y2 + h * (cB.x - cA.x) / d;
 
-  stroke(0, 26);
+  var randCol = Math.floor(Math.random() * 358); //added random colour generation
+
+  stroke(`hsl(${randCol}, 95%, 30%)`);
   line(paX, paY, pbX, pbY);
 
 }
