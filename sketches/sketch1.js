@@ -40,13 +40,29 @@ function draw() {
 
 var circleA, circleB;
 
+var lineCol = 359;
+var colChangeRate = 5;
+
+window.addEventListener("keydown", (event) => {
+  switch (event.key) {
+    case "ArrowDown":
+      lineCol -= colChangeRate;
+      if (lineCol < 0) { lineCol += 359; }
+      break;
+    case "ArrowUp":
+      lineCol += colChangeRate;
+      if (lineCol > 359) { lineCol -= 359; }
+      break;
+  }
+});
+
 function setup() {
   createCanvas(300, 300);
   frameRate(30);
   circleA = new Circle(150, 150, 60);
   circleB = new Circle(150, 150, 90);
   noStroke();
-  background(225);
+  background(245);
 }
 
 function draw() {
@@ -101,9 +117,9 @@ function intersect(cA, cB) {
   var pbX = x2 - h * (cB.y - cA.y) / d;
   var pbY = y2 + h * (cB.x - cA.x) / d;
 
-  var randCol = Math.floor(Math.random() * 358); //added random colour generation
+  // var randCol = Math.floor(Math.random() * 358); //added random colour generation
 
-  stroke(`hsl(${randCol}, 95%, 30%)`);
+  stroke(`hsl(${lineCol}, 70%, 50%)`);
   line(paX, paY, pbX, pbY);
 
 }
