@@ -1,9 +1,9 @@
 {
   "sketch1": {
-    "title": "source 1 title",
-    "author": "source 1 author",
-    "date": "source 1 date",
-    "source": "source 1 url"
+    "title": "Structure 3 Process 5",
+    "author": "Casey Reas",
+    "date": "11 July 2016",
+    "source": "https://github.com/REAS/SoftwareStructures/blob/master/Code-2016-JS/S3_Process_05/sketch.js"
   },
   "sketch2": {
     "title": "source 2 title",

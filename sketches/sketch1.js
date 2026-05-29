@@ -3,17 +3,6 @@
 // Paste your source sketch code here and start hacking
 // =============================================
 
-/*
-function setup() {
-  createCanvas(800, 500);
-}
-
-function draw() {
-  background(220);
-  // your code here
-}
-  */
-
 /* 
  
    Structure 3 (work in progress) 
@@ -43,6 +32,7 @@ var circleA, circleB;
 var lineCol = 359;
 var colChangeRate = 5;
 
+// interactive colour changer
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowDown":
@@ -57,10 +47,10 @@ window.addEventListener("keydown", (event) => {
 });
 
 function setup() {
-  createCanvas(300, 300);
+  createCanvas(500, 500);
   frameRate(30);
-  circleA = new Circle(150, 150, 60);
-  circleB = new Circle(150, 150, 90);
+  circleA = new Circle(150, 150, 80);
+  circleB = new Circle(150, 150, 110);
   noStroke();
   background(245);
 }
