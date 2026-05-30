@@ -55,6 +55,20 @@ function setup() {
   checkDisabled();
 }
 
+// * added gravity changer
+window.addEventListener("keydown", (event) => {
+  switch (event.key) {
+    case "ArrowDown":
+      ball.gravity -= 0.1;
+      gravityInp.value(ball.gravity.toFixed(1));
+      break;
+    case "ArrowUp":
+      ball.gravity += 0.1;
+      gravityInp.value(ball.gravity.toFixed(1));
+      break;
+  }
+});
+
 // * function to only accept numbers in form
 /*
 function isNumber() {
