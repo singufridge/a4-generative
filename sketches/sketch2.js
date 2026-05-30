@@ -24,7 +24,7 @@ function setup() {
     radius: 35,
     dx: 5,
     dy: 5,
-    gravity: 0.2,
+    gravity: 0.1,
     elasticity: 0.8,
     useGravity: true,
     useElasticity: true
@@ -38,10 +38,15 @@ function setup() {
   speedInput.attribute('disabled', '');
 
   createP('Gravitational Pull:');
+  /*
   //gravityInp = createCheckbox('Gravity', true);
   gravityInp = createInput('', '')
   // gravityInp.input(isNumber);
   gravityInp.changed(() => updateGravity(gravityInp.value()));
+  */
+
+  gravityInp = createInput(ball.gravity, 'number');
+  gravityInp.attribute('disabled', '');
   
   createP('');
   elasticityToggle = createCheckbox('Elasticity', true);
@@ -95,7 +100,8 @@ function updateBall() {
   }
 
   // * added ball interactivity
-  if (mouseIsPressed) {
+  let d = dist(mouseX, mouseY, ball.x, ball.y);
+  if (d < ball.radius && mouseIsPressed) {
     ball.x = mouseX;
     ball.y = mouseY;
   }
