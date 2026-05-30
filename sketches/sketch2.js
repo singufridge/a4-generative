@@ -79,10 +79,16 @@ function updateBall() {
       //playSound(400 + Math.random() * 200, Math.abs(ball.dy));
     }
   }
+
+  // * added ball interactivity
+  if (mouseIsPressed) {
+    ball.x = mouseX;
+    ball.y = mouseY;
+  }
 }
 
 
-// * removed sound
+// * removed sound from original code
 /*
 function playSound(frequency = 440, volume = 1) {
   let oscillator = audioContext.createOscillator();
