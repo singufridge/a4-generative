@@ -7,12 +7,12 @@
 
 let ball;
 let speedInput;
-let gravityToggle;
+let gravityInp;
 let elasticityToggle;
 let audioContext;
 let canvasWidth;
 let canvasHeight;
-const soundThreshold = 0.05;  
+const bounceThreshold = 0.05;  
 
 function setup() {
   canvasWidth = window.innerWidth * 0.9;
@@ -20,11 +20,11 @@ function setup() {
   createCanvas(canvasWidth, canvasHeight);
   ball = {
     x: width / 2,
-    y: height / 2,
+    y: height / 3,
     radius: 35,
     dx: 5,
     dy: 5,
-    gravity: 0.1,
+    gravity: 0.2,
     elasticity: 0.8,
     useGravity: true,
     useElasticity: true
@@ -37,9 +37,11 @@ function setup() {
   speedInput.changed(() => updateSpeed(speedInput.value()));
   speedInput.attribute('disabled', '');
 
-  createP('');
-  gravityToggle = createCheckbox('Gravity', true);
-  gravityToggle.changed(() => toggleGravity(gravityToggle.checked()));
+  createP('Gravitational Pull:');
+  //gravityInp = createCheckbox('Gravity', true);
+  gravityInp = createInput('', '')
+  // gravityInp.input(isNumber);
+  gravityInp.changed(() => updateGravity(gravityInp.value()));
   
   createP('');
   elasticityToggle = createCheckbox('Elasticity', true);
@@ -47,6 +49,18 @@ function setup() {
   
   checkDisabled();
 }
+
+// * function to only accept numbers in form
+/*
+function isNumber() {
+  let s = this.value();
+  let c = s.charCodeAt(s.length - 1);
+
+  if (!(c > 47 && c < 58)) {
+    this.value(s.substring(0,s.length-1));
+  } 
+}
+  */
 
 function draw() {
   background(238);
@@ -75,7 +89,7 @@ function updateBall() {
   if (ball.y + ball.radius > height || ball.y - ball.radius < 0) {
     ball.dy = -ball.dy * (ball.useElasticity ? ball.elasticity : 1);
     ball.y = ball.y + ball.radius > height ? height - ball.radius : ball.radius;
-    if (Math.abs(ball.dy) > soundThreshold) {
+    if (Math.abs(ball.dy) > bounceThreshold) {
       //playSound(400 + Math.random() * 200, Math.abs(ball.dy));
     }
   }
@@ -121,9 +135,8 @@ function playSound(frequency = 440, volume = 1) {
 }
 */
 
-function toggleGravity(checked) {
-  ball.useGravity = checked;
-  checkDisabled();
+function updateGravity(val) {
+  ball.gravity = val;
 }
 
 function toggleElasticity(checked) {
