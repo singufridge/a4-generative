@@ -29,10 +29,10 @@
 
 var circleA, circleB;
 
+// * added interactive colour changer
 var lineCol = 359;
 var colChangeRate = 5;
 
-// interactive colour changer
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowDown":
@@ -45,6 +45,11 @@ window.addEventListener("keydown", (event) => {
       break;
   }
 });
+
+// * added reset function
+function canvasReset() {
+  clear();
+}
 
 function setup() {
   createCanvas(500, 500);
@@ -61,7 +66,7 @@ function draw() {
   intersect(circleA, circleB);
 }
 
-function Circle(px, py, pr) { // editing the class Circle
+function Circle(px, py, pr) { 
   this.x = px;
   this.y = py;
   this.r = pr;
@@ -107,6 +112,7 @@ function intersect(cA, cB) {
   var pbX = x2 - h * (cB.y - cA.y) / d;
   var pbY = y2 + h * (cB.x - cA.x) / d;
 
+  // * unused code
   // var randCol = Math.floor(Math.random() * 358); //added random colour generation
 
   stroke(`hsl(${lineCol}, 70%, 50%)`);
