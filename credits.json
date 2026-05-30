@@ -6,9 +6,9 @@
     "source": "source 1 url"
   },
   "sketch2": {
-    "title": "source 2 title",
-    "author": "source 2 author",
-    "date": "source 2 date",
-    "source": "source 2 url"
+    "title": "bouncing ball simulation",
+    "author": "datramt2",
+    "date": "May 24th, 2024",
+    "source": "https://editor.p5js.org/datramt2/sketches/VkOHldHte"
   }
 }

@@ -21,7 +21,7 @@ function setup() {
   ball = {
     x: width / 2,
     y: height / 2,
-    radius: 20,
+    radius: 35,
     dx: 5,
     dy: 5,
     gravity: 0.1,
@@ -29,7 +29,7 @@ function setup() {
     useGravity: true,
     useElasticity: true
   };
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  //audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
   speedInput = createInput('5', 'number');
   speedInput.position(width / 2 - 30, height + 30);
