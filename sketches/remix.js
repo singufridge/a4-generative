@@ -53,7 +53,7 @@ function setup() {
   ball = {
     x: width / 2,
     y: height / 3,
-    radius: 35,
+    radius: 15,
     dx: 5,
     dy: 5,
     gravity: 0.1,
@@ -149,8 +149,8 @@ function intersect(cA, cB) {
 // ***** SKETCH 2 FUNCTIONS *****
 
 function drawBall() {
-  fill('#0095DD');
-  noStroke();
+  fill('#ffffff00');
+  stroke(`hsl(${lineCol}, 70%, 50%)`);
   ellipse(ball.x, ball.y, ball.radius * 2, ball.radius * 2);
 }
 
