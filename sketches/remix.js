@@ -150,7 +150,7 @@ function intersect(cA, cB) {
 
 function drawBall() {
   fill('#ffffff00');
-  stroke(`hsl(${lineCol}, 70%, 50%)`);
+  stroke(`hsl(${lineCol}, 10%, 70%)`);
   ellipse(ball.x, ball.y, ball.radius * 2, ball.radius * 2);
 }
 
@@ -164,13 +164,16 @@ function updateBall() {
   if (ball.x + ball.radius > width || ball.x - ball.radius < 0) {
     ball.dx = -ball.dx;
     ball.x = ball.x + ball.radius > width ? width - ball.radius : ball.radius;
-    //playSound(400 + Math.random() * 200, Math.abs(ball.dx));
+
+    lineCol += colChangeRate;
+    if (lineCol > 359) { lineCol -= 359; }
   }
   if (ball.y + ball.radius > height || ball.y - ball.radius < 0) {
     ball.dy = -ball.dy * (ball.useElasticity ? ball.elasticity : 1);
     ball.y = ball.y + ball.radius > height ? height - ball.radius : ball.radius;
     if (Math.abs(ball.dy) > bounceThreshold) {
-      //playSound(400 + Math.random() * 200, Math.abs(ball.dy));
+      lineCol += colChangeRate;
+      if (lineCol > 359) { lineCol -= 359; }
     }
   }
 
