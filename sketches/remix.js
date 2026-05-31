@@ -62,7 +62,8 @@ function setup() {
     gravity: 0.1,
     elasticity: 0.8,
     useGravity: true,
-    useElasticity: true
+    useElasticity: true,
+    isVisible: true
   };
 
   speedInput = createInput('5', 'number');
@@ -152,15 +153,16 @@ function intersect(cA, cB) {
 // ***** SKETCH 2 FUNCTIONS *****
 
 function drawBall() {
-  fill('#0095DD');
-  noStroke();
+  // if (spawnedBalls.length > 1) {
+  //   const removedBall = spawnedBalls.splice(0, 1);
+  //   removedBall.hasOutline = false;
+  //   console.log(removedBall.hasOutline);
+  // }
+
+  stroke('red');
+  fill('#0093dd00');
 
   spawnedBalls.push(ellipse(ball.x, ball.y, ball.radius * 2, ball.radius * 2));
-  
-  if (spawnedBalls.length > 1) {
-    let removedBall = spawnedBalls.splice(0, 1);
-    console.log(removedBall);
-  }
 }
 
 function updateBall() {
