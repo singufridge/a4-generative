@@ -21,6 +21,9 @@ let canvasWidth;
 let canvasHeight;
 const bounceThreshold = 0.05;
 
+// experimental: adding balls to array to delete old ones
+let spawnedBalls = [];
+
 // * gravity changer -- sketch 2
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
@@ -151,7 +154,13 @@ function intersect(cA, cB) {
 function drawBall() {
   fill('#0095DD');
   noStroke();
-  ellipse(ball.x, ball.y, ball.radius * 2, ball.radius * 2);
+
+  spawnedBalls.push(ellipse(ball.x, ball.y, ball.radius * 2, ball.radius * 2));
+  
+  if (spawnedBalls.length > 1) {
+    let removedBall = spawnedBalls.splice(0, 1);
+    console.log(removedBall);
+  }
 }
 
 function updateBall() {
