@@ -33,6 +33,10 @@ window.addEventListener("keydown", (event) => {
       ball.gravity += 0.1;
       gravityInp.value(ball.gravity.toFixed(1));
       break;
+    case "r":
+      clear();
+      background(245);
+      break;
   }
 });
 
