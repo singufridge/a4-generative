@@ -22,6 +22,7 @@ let canvasHeight;
 const bounceThreshold = 0.05;
 
 // * gravity changer -- sketch 2
+// When keys pressed, either increase or decrease gravity
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowDown":
@@ -53,7 +54,7 @@ function setup() {
   ball = {
     x: width / 2,
     y: height / 3,
-    radius: 15,
+    radius: 5,
     dx: 5,
     dy: 5,
     gravity: 0.1,
@@ -62,11 +63,13 @@ function setup() {
     useElasticity: true
   };
 
+  /* Was distracting so I took it out
   speedInput = createInput('5', 'number');
   speedInput.position(width / 2 - 30, height + 30);
   speedInput.attribute('step', '0.1');
   speedInput.changed(() => updateSpeed(speedInput.value()));
   speedInput.attribute('disabled', '');
+  */
 
   createP('Gravitational Pull:');
   gravityInp = createInput(ball.gravity, 'number');
@@ -150,7 +153,7 @@ function intersect(cA, cB) {
 
 function drawBall() {
   fill('#ffffff00');
-  stroke(`hsl(${lineCol}, 10%, 70%)`);
+  stroke(`hsla(${lineCol}, 50%, 50%, 0.30)`); // ball colour also changes with lines
   ellipse(ball.x, ball.y, ball.radius * 2, ball.radius * 2);
 }
 
@@ -172,7 +175,7 @@ function updateBall() {
     ball.dy = -ball.dy * (ball.useElasticity ? ball.elasticity : 1);
     ball.y = ball.y + ball.radius > height ? height - ball.radius : ball.radius;
     if (Math.abs(ball.dy) > bounceThreshold) {
-      lineCol += colChangeRate;
+      lineCol += colChangeRate; // when the ball gets within a certain threshold of the edges, change colour of strokes
       if (lineCol > 359) { lineCol -= 359; }
     }
   }
@@ -197,12 +200,10 @@ function toggleElasticity(checked) {
 function checkDisabled() {
   if (!ball.useGravity && !ball.useElasticity) {
     speedInput.removeAttribute('disabled');
-  } else {
-    speedInput.attribute('disabled', '');
-    speedInput.value(sqrt(ball.dx * ball.dx + ball.dy * ball.dy).toFixed(1));
   }
 }
 
+/* Commented out to remove speed input and window resizing
 function updateSpeed(value) {
   ball.dx = parseFloat(value);
   ball.dy = parseFloat(value);
@@ -217,3 +218,4 @@ function windowResized() {
     ball.y = height - ball.radius;
   }
 }
+*/

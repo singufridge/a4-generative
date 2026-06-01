@@ -14,6 +14,15 @@ body {
   color: #eee;
 }
 
+p {
+  padding: 10px;
+  padding-left: 0;
+}
+
+input {
+  color: #eee;
+}
+
 /* --- nav --- */
 nav {
   display: flex;
